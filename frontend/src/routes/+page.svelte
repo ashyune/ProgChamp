@@ -2,8 +2,18 @@
     import GameCard from '$lib/components/GameCard.svelte';
 
     const games = [
-        {id: 1, title: 'yes',description: 'um yes ahahaha'},
-        {id: 2, title: 'no',description: 'er ahahehanjscca'}
+        {
+            id: 1,
+            title: 'yes',
+            description: 'welcome to game 1, this is temporary', //these are temporary T-T
+            url: 'games/yes/index.html'
+        },
+        {
+            id: 2, 
+            title: 'no',
+            description: 'this is game 2, temporary',
+            url: 'games/no/index.html'
+        }
     ];
 </script>
 
