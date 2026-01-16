@@ -2,21 +2,20 @@
     export let id;
     export let title;
     export let description;
+    export let thumbnail;
     export let url;
 </script>
 
 <a href = {`/game/${id}`} class = "card-link">
     <div class = "card">
-        <h2> {title} </h2>
-        <p> {description} </p>
-    
-        <div class = "iframe-wrapper">
-            <iframe
-                src={url}
-                title={title}
-                loading = "lazy"
-                sandbox = "allow-scripts allow-same-origin"
-            />
+
+        <div class = "thumbnail">
+            <img src = {thumbnail} alt= {title}/>
+        </div>
+
+        <div class = "data">
+            <h2> {title} </h2>
+            <p> {description} </p>
         </div>
     </div>
 </a>
@@ -41,19 +40,30 @@
         box-shadow: 0 10px 20px rgba(0,0,0,0.25);
     }
 
-    .iframe-wrapper{
-        margin-top: 1rem;
+    .thumbnail {
         width: 100%;
         aspect-ratio: 16/9;
-        border-radius: 8px;
         overflow: hidden;
-        pointer-events: none;
     }
 
-    iframe{
+    .thumbnail img{
         width: 100%;
         height: 100%;
-        border: none;
+        object-fit: cover;
+        display: block;
+    }
+
+    .data {
+        padding: 0.75rem 1rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+        opacity: 0.85;
+        display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
 </style>

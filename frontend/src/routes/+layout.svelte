@@ -58,7 +58,7 @@
         left: 0;
         width: 100%;
         text-align: center;
-        position: fixed;
+        position: relative;
         color: rgb(67, 108, 255);
     }
 </style>

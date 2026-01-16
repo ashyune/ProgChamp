@@ -1,15 +1,24 @@
 <script>
-    export let params;
+    /** @type {{ game: any }} */
+    export let data;
+    const { game } = data;
+    
 </script>
 
-<h1> Game {params.id} </h1>
-<p> :0 </p>
+<header>
+    <h2> {game.title} </h2>
+    <a href = "/">
+        Back to Home!
+    </a>
+</header>
 
-<a href = "/">
-    Back to Home!
-</a>
+<h1> Game {game.id} </h1>
+<p> {game.description} </p>
 
 <style>
+    header{
+        color: aliceblue;
+    }
     h1, p{
         color: aliceblue;
     }
