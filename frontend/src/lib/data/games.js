@@ -1,14 +1,14 @@
 export const games = [
     {
-        id: 'yes',
-        title: 'yes',
+        id: 'game-1',
+        title: 'Game 1',
         description: 'welcome to game 1, this is temporary', //these are temporary T-T
         thumbnail: 'games/yes/thumbnail.png',
-        url: 'games/yes/index.html'
+        url: 'https://frndboard.netlify.app/'
     },
     {
-        id: 'no', 
-        title: 'no',
+        id: 'game-2', 
+        title: 'Game 2',
         description: 'this is game 2, temporary',
         thumbnail: 'games/no/thumbnail.jpg',
         url: 'games/no/index.html'

@@ -30,7 +30,7 @@
     .card {
         padding: 1rem;  
         border-radius: 8px;
-        background-color: #5b84c2;
+        background-color: #40246e;
         color: white;
         transition: transform 0.15s ease, box-shadow 0.15s ease;
     }

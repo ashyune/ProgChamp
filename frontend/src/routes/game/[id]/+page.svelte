@@ -12,15 +12,32 @@
     </a>
 </header>
 
-<h1> Game {game.id} </h1>
-<p> {game.description} </p>
+<main>
+    <div class = "iframe-card">
+        <iframe title = {game.title} src = {game.url}>
+
+        </iframe>
+
+    </div>
+    <p> {game.description} </p>
+</main>
+
+
 
 <style>
     header{
         color: aliceblue;
+        padding-bottom: 1rem;
     }
-    h1, p{
+    h2, p{
         color: aliceblue;
+    }
+
+    iframe {
+        width: 75%;
+        aspect-ratio: 16/9;
+        border-radius: 8px;
+        border-color: rgb(179, 158, 255);
     }
     
 </style>
