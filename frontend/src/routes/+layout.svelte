@@ -46,6 +46,11 @@
 		font-weight: 100;
 	}
 
+    header h1{
+        margin: 0.2rem 0;  /*there was too much space above and below the header*/
+        padding: 0;
+    }
+
     a{
         text-decoration: none;
         transition: transform 0.15s ease;
