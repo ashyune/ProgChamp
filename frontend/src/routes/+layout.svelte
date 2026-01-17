@@ -1,11 +1,24 @@
 <script>
     import '../app.css'
+    import { user } from '$lib/stores/user.js';
 </script>
 
 <header>
     <a href = "/">
         <h1> Progchamp! </h1>
     </a>
+
+     <nav>
+        <a href="/">Home</a>
+
+        {#if $user.role === "dev"}
+            | <a href="/upload">Upload</a>
+        {/if}
+
+        {#if $user.role === "admin"}
+            | <a href="/admin">Admin</a>
+        {/if}
+    </nav>
 </header>
 
 <main>
