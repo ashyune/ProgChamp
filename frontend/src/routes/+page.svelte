@@ -1,12 +1,37 @@
-<script>
+<script lang="ts">
     import GameCard from '$lib/components/GameCard.svelte';
     import {games} from '$lib/data/games.js';
     
     let query = '';
+    let selectedTags: Set<string> = new Set();
 
-    $: filteredGames = games.filter(game =>
-        game.title.toLowerCase().includes(query.toLowerCase())||game.description.toLowerCase().includes(query.toLowerCase())
+    $: filteredGames = games.filter(game => {
+        const matchesQuery =    
+            game.title.toLowerCase().includes(query.toLowerCase()) ||
+            game.description.toLowerCase().includes(query.toLowerCase());
+            
+        const matchesTags = 
+            selectedTags.size === 0 ||
+            [...selectedTags].every(tag => game.tags.includes(tag));
+
+            return matchesQuery && matchesTags;
+    }
     );
+
+    const allTags = [...new Set(games.flatMap(g => g.tags))];
+
+    function toggleTag(tag: string) {
+        if (selectedTags.has(tag)) {
+            selectedTags.delete(tag);
+        }
+        else {
+            selectedTags.add(tag);
+        }
+
+        selectedTags = new Set(selectedTags);
+    }
+
+
 </script>
 
 <h1> Games! </h1>
@@ -19,15 +44,21 @@
     bind:value={query}
 />
 
+<div class = "tag-filters">
+    {#each allTags as tag}
+        <button
+            class:selected = {selectedTags.has(tag)}
+            on:click = {() => toggleTag(tag)}
+        >
+            #{tag} 
+        </button>
+    {/each}
+</div>
+
 <div class = 'grid'>
     {#each filteredGames as game}
-        <GameCard 
-            id = {game.id} 
-            title = {game.title} 
-            description = {game.description} 
-            thumbnail = {game.thumbnail} 
-            url = {game.url} 
-        />
+        <GameCard {game} />
+
     {/each}
 </div>
 

@@ -1,21 +1,35 @@
-<script>
-    export let id;
-    export let title;
-    export let description;
-    export let thumbnail;
-    export let url;
+<script lang="ts">
+    export let game: {
+        id: string;
+        title: string;
+        devName: string;
+        description: string;
+        thumbnail: string;
+        url: string;
+        ratings: string;
+        views: string;
+        superlikes: string;
+        tags: string[];
+    }
 </script>
 
-<a href = {`/game/${id}`} class = "card-link">
+<a href = {`/game/${game.id}`} class = "card-link">
     <div class = "card">
 
         <div class = "thumbnail">
-            <img src = {thumbnail} alt= {title}/>
+            <img src = {game.thumbnail} alt= {game.title}/>
         </div>
 
         <div class = "data">
-            <h2> {title} </h2>
-            <p> {description} </p>
+            <h2> {game.title} </h2>
+            <p> {game.devName} </p>
+            <hr>
+            ⭐ {game.ratings} 👥 {game.views} 🌟 {game.superlikes} <br>
+            <div class = "tags">
+                {#each game.tags as tag}
+                    <span class = "tag">#{tag}</span>
+                {/each}
+            </div>
         </div>
     </div>
 </a>
