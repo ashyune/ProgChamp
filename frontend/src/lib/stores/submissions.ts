@@ -7,6 +7,7 @@ export type Submission = {
   url: string;
   thumbnail: File | null;
   status: "pending" | "approved" | "rejected";
+  dev: string;
 };
 
 export const submissions = writable<Submission[]>([]);

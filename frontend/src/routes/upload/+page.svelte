@@ -1,5 +1,6 @@
 <script lang="ts">
   import { submissions } from '../../lib/stores/submissions.ts';
+  import { user } from '$lib/stores/user.js';
 
   let title = "";
   let description = "";
@@ -27,7 +28,8 @@
         description,
         url,
         thumbnail,
-        status: "pending"
+        status: "pending",
+        dev: $user.name
       }
     ]);
 
