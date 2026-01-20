@@ -5,6 +5,8 @@ import { writable } from 'svelte/store';
 export const user = writable({
     isSignedIn: true,
     name: 'test',
-    role: 'dev' 
+    role: 'dev',
+    usedSuperLikes: 0,
+    maxSuperLikes: 3
 });
 

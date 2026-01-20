@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { submissions } from '../../lib/stores/submissions.ts';
+  import { submissions } from '../../lib/stores/submissions';
   import { user } from '$lib/stores/user.js';
 </script>
 
