@@ -79,5 +79,8 @@
             -webkit-box-orient: vertical;
         overflow: hidden;
     }
-
+    
+    .tags{
+        
+    }
 </style>
