@@ -1,40 +1,48 @@
 <script>
     import '../app.css'
-    import { user } from '$lib/stores/user.js'
     import { goto } from '$app/navigation'
+    import { page } from '$app/stores'
+    import { signIn, signOut} from '@auth/sveltekit/client'
 
     let isProfileOpen = false
 
     function showProfile() {
         isProfileOpen = !isProfileOpen
     }
+
+    $: session = $page.data.session;
+    $: user = session?.user;
+    $: role = user?.email?.endsWith('@pes.edu') ? 'admin' : 'dev';
+
 </script>
 
 <header>
     <div class="topbar">
         <button class="profile-btn" on:click={showProfile}>
-            {$user.isSignedIn ? $user.name : 'Guest'}
+            {user ? user.name : 'Guest'}
         </button>
 
-        {#if $user.isSignedIn && isProfileOpen}
+        {#if user && isProfileOpen}
             <div class="profile-dropdown">
-                <p>{$user.name}</p>
+                <p>{user.name}</p>
 
-                {#if $user?.role === "dev"}
+                {#if role === "dev"}
                     <button on:click={() => goto('/my-games')}>My Games</button>
                     <button on:click={() => goto('/upload')}>Publish Game</button>
                 {/if}
 
-                {#if $user?.role === "admin"}
+                {#if role === "admin"}
                     <button on:click={() => goto('/admin')}>Dashboard</button>
                 {/if}
 
-                <button class="sign-out">Sign Out</button>
+                <button class="sign-out" on:click={() => signOut()}>
+                    Sign Out
+                </button>
             </div>
         {/if}
 
-        {#if !$user.isSignedIn}
-            <button class="login-btn">
+        {#if !user}
+            <button class="login-btn" on:click={() => signIn('google')}>
                 Sign in with Google
             </button>
         {/if}
@@ -97,12 +105,14 @@
         background-color: #0a0a0f;
         color: lavender;
         cursor: pointer;
+        transition: transform 150ms ease, border-color 150ms ease;
+        display: inline-block;
+        will-change: transform, border-color;
     }
 
     .login-btn:hover, .profile-btn:hover {
         border-color: #ca1261;
-        transform: scale(1.05);
-        transition: all 150ms ease;
+        transform: translateY(-2px);
     }
 
     .profile-dropdown {

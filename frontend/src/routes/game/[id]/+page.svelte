@@ -70,8 +70,28 @@
 
         <h2> About {game.title} </h2>
         <p> {game.description} </p>
-
+        
+        <!-- tags come here -->
     </div>
+
+    <!-- in progress, ratings and superlike stuff to be replaced -->
+    <div class = "stats-container">
+        <div class = "ratings">
+            <h2> Rate this game </h2>
+            1 2 3 4 5 
+
+            <h2> Superlike </h2>
+            superlike
+            1/3 superlikes used
+        </div>
+        <div class = "stats">
+            <h2> Stats </h2>
+            total ratings: 
+            average score: 
+            superlikes:
+        </div>
+    </div>
+    
 </main>
 
 
@@ -94,8 +114,32 @@
         border: 1px solid;
         border-radius: 8px;
         border-color: cyan;
+        margin-bottom: 1rem;
     }
 
+    .stats-container {
+        display: flex;
+        gap: 20px;
+        margin: 0 auto;
+        width: 75%;
+        color: cyan;        
+    }
+
+    .ratings {
+        border: 1px solid;
+        flex: 1;
+        padding: 15px;
+        border-radius: 8px;
+        border-color: cyan;
+    }
+
+    .stats {
+        border: 1px solid;
+        flex: 1;
+        padding: 15px;
+        border-radius: 8px;
+        border-color: cyan;
+    }
     .overlay {
         position: fixed;
         inset: 0;
@@ -135,6 +179,7 @@
         aspect-ratio: 16/9;
         border-radius: 8px;
         border-color: rgb(179, 158, 255);
+        margin-bottom: 1rem;
     }
     
 </style>    
