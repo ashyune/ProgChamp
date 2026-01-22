@@ -81,6 +81,14 @@
     }
     
     .tags{
-        
+        margin: 1rem auto;
+    }
+
+    .tag{
+        padding: 4px;
+        margin: 3px;
+        border: 1px solid;
+        border-color: lavender;
+        border-radius: 8px;
     }
 </style>
